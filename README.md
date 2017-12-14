@@ -45,8 +45,8 @@ Develop a user interface for NoScript 10.x that has the following properties:
   - Allow users to enable allowing first party resources by default.
     * Allow the user to define what is means by first party. Just domain, domain and subdomain, protocol, etc?
     * Allow the user to define the types of first party resources they will allow by default. Just scripts?
-    * Since this is a mockup, nothing is currently stored in local storage. The configuration should be.
-    * Allow the user to view and save their current policy.
+- Since this is a mockup, nothing is currently stored in local storage. The configuration should be.
+- Allow the user to view and save their current policy.
 
 ## License
 
