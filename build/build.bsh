@@ -1,0 +1,73 @@
+#!/bin/bash
+
+declare -A map=( \
+  ["src/index.html"]="index.html" \
+  ["lib/bootstrap/dist/css/bootstrap.min.css"]="lib/bootstrap/dist/css/bootstrap.min.css" \
+  ["lib/jquery/dist/jquery.slim.min.js"]="lib/jquery/dist/jquery.slim.min.js" \
+  ["lib/jquery/dist/jquery.slim.min.map"]="lib/jquery/dist/jquery.slim.min.map" \
+  ["lib/popper.js/dist/umd/popper.min.js"]="lib/popper.js/dist/umd/popper.min.js" \
+  ["lib/popper.js/dist/umd/popper.min.js.map"]="lib/popper.js/dist/umd/popper.min.js.map" \
+  ["lib/bootstrap/dist/js/bootstrap.min.js"]="lib/bootstrap/dist/js/bootstrap.min.js" \
+  ["lib/bootstrap/dist/js/bootstrap.min.js.map"]="lib/bootstrap/dist/js/bootstrap.min.js.map" \
+  ["lib/nano-tpl/dist/nano-tpl.min.js"]="lib/nano-tpl/dist/nano-tpl.min.js" \
+  ["lib/URI.js/src/URI.min.js"]="lib/URI.js/src/URI.min.js" \
+  ["dist/noscript-ui.min.js"]="dist/noscript-ui.min.js"
+)
+
+echo "Checking uglifyjs is installed..."
+if ! type uglifyjs >/dev/null 2>&1; then
+	echo >&2 "I require uglifyjs (harmony branch for ES2015 compatibility) but it is not installed.  See https://github.com/mishoo/UglifyJS2/tree/harmony. Aborting."
+	exit 1
+fi
+echo "Determining the root directory..."
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+if [ "$?" -ne "0" ]; then
+	echo >&2 "Failed to locate root directory"
+	exit 1
+fi
+echo "Clearing out the dist directory"
+rm -rf "${ROOT_DIR}/dist/"*
+if [ "$?" -ne "0" ]; then
+	echo >&2 "Unable to delete files from dist directory";
+	exit 1;
+fi
+echo "Copying file to the dist directory..."
+cp "${ROOT_DIR}/src/noscript-ui.js" "${ROOT_DIR}/dist/noscript-ui.js"
+if [ "$?" -ne "0" ]; then
+	echo >&2 "Failed to copy file";
+	exit 1;
+fi
+echo "Minimising file..."
+uglifyjs --compress --mangle -- "${ROOT_DIR}/dist/noscript-ui.js" > "${ROOT_DIR}/dist/noscript-ui.min.js"
+if [ "$?" -ne "0" ]; then
+	echo >&2 "Failed to minimise file";
+	exit 1;
+fi
+echo "Clearing out the docs directory"
+rm -rf "${ROOT_DIR}/docs/"*
+if [ "$?" -ne "0" ]; then
+	echo >&2 "Unable to delete files from docs directory";
+	exit 1;
+fi
+echo "Copying files to the docs directory..."
+for i in "${!map[@]}"; do
+  inputFile="${ROOT_DIR}/$i"
+  if [ ! -f "$inputFile" ]; then
+    echo >&2 "Input file cannot be found: $inputFile";
+    exit 1;
+  fi
+  outputFile="${ROOT_DIR}/docs/${map[$i]}"
+  outputDir=$(dirname "$outputFile")
+  mkdir -p "$outputDir"
+  if [ "$?" -ne "0" ]; then
+    echo >&2 "Failed to make directory: $outputDir";
+    exit 1;
+  fi
+  cp "$inputFile" "$outputFile"
+  if [ "$?" -ne "0" ]; then
+    echo >&2 "Failed to copy file $inputFile to $outputFile";
+    exit 1;
+  fi
+done
+echo "Done!"
+exit 0
