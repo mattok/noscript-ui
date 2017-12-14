@@ -1,9 +1,9 @@
 # noscript-ui
 Mockup User Interface for NoScript 10.x
 
-*Note: This is a work in progress.*
-
 ## Demo
+
+*Note: This is a work in progress. This demo is designed to work in Firefox Quantum. It will not work in older browsers lacking ES2015 support.*
 
 https://mattok.github.io/noscript-ui/
 
@@ -23,7 +23,7 @@ Develop a user interface for NoScript 10.x that has the following properties:
 ## Current dependencies
 
 - jquery https://github.com/jquery/jquery.git
-  For Bootstrapa and noscript-ui. Dependency could probably be fairly easily removed from noscript-ui.
+  For Bootstrap and noscript-ui. Dependency could probably be fairly easily removed from noscript-ui.
 - popper.js https://github.com/FezVrasta/popper.js.git
   For Bootstrap.
 - bootstrap https://github.com/twbs/bootstrap.git
@@ -33,6 +33,7 @@ Develop a user interface for NoScript 10.x that has the following properties:
   (I wrote this for this project!)
 - URI.js https://github.com/medialize/URI.js.git
   For parsing URLs within noscript-ui.
+- EcmaScript 2015 (present in Mozilla Quantum)
 
 ## To do
 
