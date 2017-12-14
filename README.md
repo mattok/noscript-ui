@@ -3,6 +3,10 @@ Mockup User Interface for NoScript 10.x
 
 *Note: This is a work in progress.*
 
+## Demo
+
+https://mattok.github.io/noscript-ui/
+
 ## Aims
 
 Develop a user interface for NoScript 10.x that has the following properties:
