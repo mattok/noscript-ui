@@ -684,8 +684,8 @@
 <li class="list-group-item list-group-item-action">
   <div class="row">
     <div class="col-12 col-sm-8 col-xl-8"></div>
-    <div class="col-6 col-sm-2 col-xl-2 text-center">Allow</div>
-    <div class="col-6 col-sm-2 col-xl-2 text-center">Block</div>
+    <div class="col-6 col-sm-2 col-xl-2 text-right">Allow</div>
+    <div class="col-6 col-sm-2 col-xl-2 text-right">Block</div>
   </div>
 </li>
 `;
@@ -706,23 +706,23 @@
               output += nano.html `
 <li class="list-group-item list-group-item-action noscript-uncategorised-item" data-url="${ url }" >
   <div class="row">
-    <div class="col-12 mb-1 col-sm-8 mb-sm-0 col-xl-8">
+    <div class="col-12 mb-2 col-sm-8 mb-sm-0 col-xl-8">
       <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
       <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
     </div>
     <div class="col-6 col-sm-2 col-xl-2 text-right noscript-toolbar" role="group" aria-label="Allow group">
-      <button class="btn btn-info btn-sm mb-sm-1 mb-xl-0" type="button" data-access="sites" data-action="allow">
+      <button class="btn btn-info btn-sm mb-1 mb-xl-0" type="button" data-access="sites" data-action="allow">
         for site
       </button>
-      <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
+      <button class="btn btn-info btn-sm mb-1 mb-xl-0 font-weight-bold" type="button" data-access="global" data-action="allow">
         anywhere
       </button>
     </div>
     <div class="col-6 col-sm-2 col-xl-2 text-right noscript-toolbar" role="group" aria-label="Block group">
-      <button class="btn btn-danger btn-sm mb-sm-1 mb-xl-0" type="button" data-access="sites" data-action="deny">
+      <button class="btn btn-danger btn-sm mb-1 mb-xl-0" type="button" data-access="sites" data-action="deny">
         for site
       </button>
-      <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
+      <button class="btn btn-danger btn-sm mb-1 mb-xl-0 font-weight-bold" type="button" data-access="global" data-action="deny">
         everywhere
       </button>
     </div>
