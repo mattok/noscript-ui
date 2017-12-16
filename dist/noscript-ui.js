@@ -697,45 +697,47 @@
               };
               output += nano.html `
   <li class="list-group-item list-group-item-action noscript-uncategorised-item" data-url="${ url }" >
-    <div class="d-flex justify-content-between">
-      <div>
+    <div class="row">
+      <div class="col-12 mb-1 col-md-6 mb-md-0">
         <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
         <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
       </div>
-      <div class="btn-toolbar noscript-toolbar" role="toolbar" aria-label"Allow/Block toolbar">
-        <span class="btn-group mr-1" role="group" aria-label"Allow group">
-          <span class="btn btn-outline-info btn-sm disabled">
-            Allow
-          </span>
-          <button class="btn btn-info btn-sm" type="button" data-access="sites" data-action="allow">
-            for site
-          </button>
-          <span class="btn btn-outline-info btn-sm disabled">
-            or
-          </span>
-          <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
-            anywhere
-          </button>
-        </span>
-        <span class="btn-group" role="group" aria-label"Block group">
-          <span class="btn btn-outline-danger btn-sm disabled">
-            Block
-          </span>
-          <button class="btn btn-danger btn-sm" type="button" data-access="sites" data-action="deny">
-            for site
-          </button>
-          <span class="btn btn-outline-danger btn-sm disabled">
-            or
-          </span>
-          <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
-            everywhere
-          </button>
-        </span>
+      <div id="noscript-uncategorised-types-${ i }" class="col-12 mb-1 collapse noscript-types">
+        <div class="form-inline justify-content-start">
+          ${ new NoScriptUI.tpl.UncategorisedTypes(typesData) }
+        </div>
       </div>
-    </div>
-    <div id="noscript-uncategorised-types-${ i }" class="collapse mt-1 noscript-types">
-      <div class="form-inline justify-content-start">
-        ${ new NoScriptUI.tpl.UncategorisedTypes(typesData) }
+      <div class="col-12 mb-1 float-md-right">
+        <div class="btn-toolbar noscript-toolbar justify-content-end" aria-label="Allow/Block toolbar" role="toolbar">
+          <div class="btn-group mr-1 mb-1" role="group" aria-label="Allow group">
+            <span class="btn btn-outline-info btn-sm disabled">
+              Allow
+            </span>
+            <button class="btn btn-info btn-sm" type="button" data-access="sites" data-action="allow">
+              for site
+            </button>
+            <span class="btn btn-outline-info btn-sm disabled">
+              or
+            </span>
+            <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
+              anywhere
+            </button>
+          </div>
+          <div class="btn-group mb-1" role="group" aria-label="Block group">
+            <span class="btn btn-outline-danger btn-sm disabled">
+              Block
+            </span>
+            <button class="btn btn-danger btn-sm" type="button" data-access="sites" data-action="deny">
+              for site
+            </button>
+            <span class="btn btn-outline-danger btn-sm disabled">
+              or
+            </span>
+            <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
+              everywhere
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </li>
@@ -804,8 +806,8 @@
           {
             return ( this.data.scheme.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-scheme" data-component="scheme" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.scheme }://
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+  <input class="noscript-url-scheme" data-component="scheme" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.scheme }://
 </label>`
               : '';
           }
@@ -817,8 +819,8 @@
           {
             return ( this.data.username.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-username" data-component="username" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.username }@
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+  <input class="noscript-url-username" data-component="username" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.username }@
 </label>`
               : '';
           }
@@ -830,8 +832,8 @@
           {
             return ( this.data.ip.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-ip" data-component="ip" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.ip }
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+  <input class="noscript-url-ip" data-component="ip" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.ip }
 </label>`
               : '';
           }
@@ -843,8 +845,8 @@
           {
             return ( this.data.subdomain.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-subdomain" data-component="subdomain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.subdomain }.
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+  <input class="noscript-url-subdomain" data-component="subdomain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.subdomain }.
 </label>`
               : '';
           }
@@ -856,8 +858,8 @@
           {
             return ( this.data.domain.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-domain" data-component="domain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.domain }
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+  <input class="noscript-url-domain" data-component="domain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.domain }
 </label>`
               : '';
           }
@@ -919,8 +921,8 @@
           {
             return ( this.data.port.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-port" data-component="port" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />:${ this.data.port }
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+  <input class="noscript-url-port" data-component="port" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />:${ this.data.port }
 </label>`
               : '';
           }
@@ -960,9 +962,9 @@
                 )
             };
             return nano.html `
-<tt class="btn-group" data-toggle="buttons">
+<samp class="btn-group" data-toggle="buttons">
 ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl.URLRuleSelectorUsername( usernameData ) }${ new NoScriptUI.tpl.URLRuleSelectorHostname( this.data ) }${ new NoScriptUI.tpl.URLRuleSelectorPort( portData ) }
-</tt>`;
+</samp>`;
           }
         }
 
@@ -970,7 +972,20 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
         {
           html()
           {
-            var output = '';
+            var output = nano.html `
+<header class="row mt-1">
+  <div class="col-4 col-md-3 col-lg-3 col-xl-2">
+    <button class="btn btn-secondary btn-sm" type="button">Close</button>
+  </div>
+  <h1 class="col-12 order-2 col-md-6 order-md-1 col-lg-6 col-xl-8 text-center small mt-1"><samp>${ this.data["current-url"] }</samp></h1>
+  <form class="col-8 order-1 col-md-3 order-md-2 col-lg-3 col-xl-2 text-right" method="get">
+    <button class="btn btn-primary btn-sm" type="submit">Reload</button>
+    <button class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" type="button">Settings</button>
+  </form>
+</header>
+            
+<main>
+`;
             if ( Object.keys(this.data.categories.uncategorised).length > 0 )
             {
               var urlData =
@@ -980,12 +995,12 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
               }
               output += nano.html `
 <div class="card bg-warning mt-3" id="noscript-uncategorised">
-  <h2 class="card-header">
-    <span class="d-flex justify-content-between">
-      <span>Uncategorised (Blocked)</span>
-      <span id="noscript-primary-rule" data-url="${ this.data["current-url"] }" class="float-right">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
-    </span>
-  </h2>
+  <div class="card-header">
+    <div class="row">
+      <h3 class="col-12 text-center col-sm-7 text-sm-left ">Uncategorised (Blocked)</h3>
+      <div id="noscript-primary-rule" class="col-12 text-center col-sm-5 text-sm-right" data-url="${ this.data["current-url"] }" >${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</div>
+    </div>
+  </div>
 
   <ul class="list-group list-group-flush">
     ${ new NoScriptUI.tpl.UncategorisedItems( this.data ) }
@@ -1007,12 +1022,10 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
                 };
                 output += nano.html `
 <div class="card bg-${ data.style } mt-3 noscript-categorised" data-access="${ accessType }">
-  <h2 class="card-header text-white">
-    <span class="d-flex justify-content-between">
-      <span>${ NoScriptUI.const["access-types"][accessType].description }</span>
-      <span class="noscript-forget-all"><button class="btn btn-secondary btn-sm" type="button">Forget All</button></span>
-    </span>
-  </h2>
+  <div class="card-header text-white">
+    <div class="noscript-forget-all float-right"><button class="btn btn-secondary btn-sm" type="button">Forget All</button></div>
+    <h3>${ NoScriptUI.const["access-types"][accessType].description }</h3>
+  </div>
 
   <ul class="list-group list-group-flush">
     ${ new NoScriptUI.tpl.CategorisedItems( data ) }
@@ -1024,6 +1037,7 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
             
             output += nano.html `<pre><code>${ JSON.stringify( NoScriptUI.config, undefined, 2 ) }</code></pre>`;
             
+            output += nano.html `</main>`;
             return output;
           }
         }
@@ -1035,8 +1049,6 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
         NoScriptUI.session["current-url"] = theURL;
         NoScriptUI.session["resources"] = theResources;
       
-        document.getElementById('noscript-page-url').innerHTML = nano.html `${ theURL }`;
-        
         if ( ! ("primary-site-components" in NoScriptUI.session) )
         {
           NoScriptUI.session["primary-site-components"] = NoScriptUI.method.GetInitialComponents( theURL );

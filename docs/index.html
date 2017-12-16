@@ -7,21 +7,7 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="container-fluid">
-    
-      <header>
-        <nav class="navbar navbar-expand-sm justify-content-between bg-light">
-          <div class="navbar-nav">
-            <a class="nav-link" href="#">NoScript UI</a>
-          </div>
-  	      <h1 class="navbar-text small"><tt id="noscript-page-url"></tt></h1> 
-          <form class="form-inline" method="get">
-            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="submit">Settings</button>
-          </form>
-        </nav>
-      </header>
-      
-      <main id="noscript-main"></main>
+    <div id="noscript-main" class="container-fluid">
     </div>
     
     <script src="lib/jquery/dist/jquery.slim.min.js"></script>
@@ -36,15 +22,15 @@
   {
     "use strict";
     NoScriptUI.Run(
-      // 'https://random.site.org/some/random/path?blah&blah#frag'
-      window.location.toString()
+     'https://random.site.org/some/random/path?blah&blah#frag'
+     // window.location.toString()
       , [
-        { type: 'font', url: 'youtube.com' }
-        , { type: 'script', url: 'myblog.com' }
-        , { type: 'script', url: 'youtube.com' }
-        , { type: 'webgl', url: 'youtube.com' }
-        , { type: 'frames', url: 'youtube.com' }
-        , { type: 'script', url: 'test.site.com' }
+        { type: 'font', url: 'https://www.youtube.com/' }
+        , { type: 'script', url: 'https://www.myblog.com/' }
+        , { type: 'script', url: 'https://www.youtube.com/' }
+        , { type: 'webgl', url: 'https://www.youtube.com/' }
+        , { type: 'frames', url: 'https://www.youtube.com/' }
+        , { type: 'script', url: 'https://me@www.test.site.com:8080/' }
       ]
     );
       

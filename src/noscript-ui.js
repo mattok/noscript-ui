@@ -697,45 +697,47 @@
               };
               output += nano.html `
   <li class="list-group-item list-group-item-action noscript-uncategorised-item" data-url="${ url }" >
-    <div class="d-flex justify-content-between">
-      <div>
+    <div class="row">
+      <div class="col-12 mb-1 col-md-6 mb-md-0">
         <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
         <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
       </div>
-      <div class="btn-toolbar noscript-toolbar" role="toolbar" aria-label="Allow/Block toolbar">
-        <span class="btn-group mr-1" role="group" aria-label="Allow group">
-          <span class="btn btn-outline-info btn-sm disabled">
-            Allow
-          </span>
-          <button class="btn btn-info btn-sm" type="button" data-access="sites" data-action="allow">
-            for site
-          </button>
-          <span class="btn btn-outline-info btn-sm disabled">
-            or
-          </span>
-          <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
-            anywhere
-          </button>
-        </span>
-        <span class="btn-group" role="group" aria-label="Block group">
-          <span class="btn btn-outline-danger btn-sm disabled">
-            Block
-          </span>
-          <button class="btn btn-danger btn-sm" type="button" data-access="sites" data-action="deny">
-            for site
-          </button>
-          <span class="btn btn-outline-danger btn-sm disabled">
-            or
-          </span>
-          <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
-            everywhere
-          </button>
-        </span>
+      <div id="noscript-uncategorised-types-${ i }" class="col-12 mb-1 collapse noscript-types">
+        <div class="form-inline justify-content-start">
+          ${ new NoScriptUI.tpl.UncategorisedTypes(typesData) }
+        </div>
       </div>
-    </div>
-    <div id="noscript-uncategorised-types-${ i }" class="collapse mt-1 noscript-types">
-      <div class="form-inline justify-content-start">
-        ${ new NoScriptUI.tpl.UncategorisedTypes(typesData) }
+      <div class="col-12 mb-1 float-md-right">
+        <div class="btn-toolbar noscript-toolbar justify-content-end" aria-label="Allow/Block toolbar" role="toolbar">
+          <div class="btn-group mr-1 mb-1" role="group" aria-label="Allow group">
+            <span class="btn btn-outline-info btn-sm disabled">
+              Allow
+            </span>
+            <button class="btn btn-info btn-sm" type="button" data-access="sites" data-action="allow">
+              for site
+            </button>
+            <span class="btn btn-outline-info btn-sm disabled">
+              or
+            </span>
+            <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
+              anywhere
+            </button>
+          </div>
+          <div class="btn-group mb-1" role="group" aria-label="Block group">
+            <span class="btn btn-outline-danger btn-sm disabled">
+              Block
+            </span>
+            <button class="btn btn-danger btn-sm" type="button" data-access="sites" data-action="deny">
+              for site
+            </button>
+            <span class="btn btn-outline-danger btn-sm disabled">
+              or
+            </span>
+            <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
+              everywhere
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </li>
@@ -804,7 +806,7 @@
           {
             return ( this.data.scheme.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
   <input class="noscript-url-scheme" data-component="scheme" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.scheme }://
 </label>`
               : '';
@@ -817,7 +819,7 @@
           {
             return ( this.data.username.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
   <input class="noscript-url-username" data-component="username" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.username }@
 </label>`
               : '';
@@ -830,7 +832,7 @@
           {
             return ( this.data.ip.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
   <input class="noscript-url-ip" data-component="ip" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.ip }
 </label>`
               : '';
@@ -843,7 +845,7 @@
           {
             return ( this.data.subdomain.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
   <input class="noscript-url-subdomain" data-component="subdomain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.subdomain }.
 </label>`
               : '';
@@ -856,7 +858,7 @@
           {
             return ( this.data.domain.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
   <input class="noscript-url-domain" data-component="domain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.domain }
 </label>`
               : '';
@@ -919,7 +921,7 @@
           {
             return ( this.data.port.length > 0 )
               ? nano.html `
-<label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
+<label class="btn btn-outline-secondary btn-sm pl-1 pr-1 mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
   <input class="noscript-url-port" data-component="port" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />:${ this.data.port }
 </label>`
               : '';
