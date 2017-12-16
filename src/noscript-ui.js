@@ -710,7 +710,7 @@
       <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
       <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
     </div>
-    <div class="col-6 col-sm-2 col-xl-2 text-right" role="group" aria-label="Allow group">
+    <div class="col-6 col-sm-2 col-xl-2 text-right noscript-toolbar" role="group" aria-label="Allow group">
       <button class="btn btn-info btn-sm mb-sm-1 mb-xl-0" type="button" data-access="sites" data-action="allow">
         for site
       </button>
@@ -718,7 +718,7 @@
         anywhere
       </button>
     </div>
-    <div class="col-6 col-sm-2 col-xl-2 text-right" role="group" aria-label="Block group">
+    <div class="col-6 col-sm-2 col-xl-2 text-right noscript-toolbar" role="group" aria-label="Block group">
       <button class="btn btn-danger btn-sm mb-sm-1 mb-xl-0" type="button" data-access="sites" data-action="deny">
         for site
       </button>
