@@ -680,7 +680,15 @@
         {
           html()
           {
-            var output = '';
+            var output = nano.html `
+<li class="list-group-item list-group-item-action">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-xl-8"></div>
+    <div class="col-6 col-sm-2 col-xl-2 text-center">Allow</div>
+    <div class="col-6 col-sm-2 col-xl-2 text-center">Block</div>
+  </div>
+</li>
+`;
             var i=0;
             for ( var url in this.data.categories.uncategorised )
             {
@@ -696,52 +704,36 @@
                 , "url-components": NoScriptUI.session["secondary-site-components"][url]
               };
               output += nano.html `
-  <li class="list-group-item list-group-item-action noscript-uncategorised-item" data-url="${ url }" >
-    <div class="row">
-      <div class="col-12 mb-1 col-md-6 mb-md-0">
-        <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
-        <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
-      </div>
-      <div id="noscript-uncategorised-types-${ i }" class="col-12 mb-1 collapse noscript-types">
-        <div class="form-inline justify-content-start">
-          ${ new NoScriptUI.tpl.UncategorisedTypes(typesData) }
-        </div>
-      </div>
-      <div class="col-12 mb-1 float-md-right">
-        <div class="btn-toolbar noscript-toolbar justify-content-end" aria-label="Allow/Block toolbar" role="toolbar">
-          <div class="btn-group mr-1 mb-1" role="group" aria-label="Allow group">
-            <span class="btn btn-outline-info btn-sm disabled">
-              Allow
-            </span>
-            <button class="btn btn-info btn-sm" type="button" data-access="sites" data-action="allow">
-              for site
-            </button>
-            <span class="btn btn-outline-info btn-sm disabled">
-              or
-            </span>
-            <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
-              anywhere
-            </button>
-          </div>
-          <div class="btn-group mb-1" role="group" aria-label="Block group">
-            <span class="btn btn-outline-danger btn-sm disabled">
-              Block
-            </span>
-            <button class="btn btn-danger btn-sm" type="button" data-access="sites" data-action="deny">
-              for site
-            </button>
-            <span class="btn btn-outline-danger btn-sm disabled">
-              or
-            </span>
-            <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
-              everywhere
-            </button>
-          </div>
-        </div>
-      </div>
+<li class="list-group-item list-group-item-action noscript-uncategorised-item" data-url="${ url }" >
+  <div class="row">
+    <div class="col-12 mb-1 col-sm-8 mb-sm-0 col-xl-8">
+      <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
+      <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
     </div>
-  </li>
-  `;
+    <div class="col-6 col-sm-2 col-xl-2 text-right" role="group" aria-label="Allow group">
+      <button class="btn btn-info btn-sm mb-sm-1 mb-xl-0" type="button" data-access="sites" data-action="allow">
+        for site
+      </button>
+      <button class="btn btn-info btn-sm font-weight-bold" type="button" data-access="global" data-action="allow">
+        anywhere
+      </button>
+    </div>
+    <div class="col-6 col-sm-2 col-xl-2 text-right" role="group" aria-label="Block group">
+      <button class="btn btn-danger btn-sm mb-sm-1 mb-xl-0" type="button" data-access="sites" data-action="deny">
+        for site
+      </button>
+      <button class="btn btn-danger btn-sm font-weight-bold" type="button" data-access="global" data-action="deny">
+        everywhere
+      </button>
+    </div>
+  </div>
+  <div id="noscript-uncategorised-types-${ i }" class="mb-1 collapse noscript-types">
+    <div class="form-inline justify-content-start">
+      ${ new NoScriptUI.tpl.UncategorisedTypes(typesData) }
+    </div>
+  </div>
+</li>
+`;
             }
             return output;
           }
@@ -757,12 +749,12 @@
               var enabled = type in this.data.types;
               var ruleData = type in this.data.types ? this.data.types[type] : null;
               output += nano.html `
-  <label class="custom-control custom-checkbox ${ enabled ? 'border border-' + this.data.style + ' rounded' : '' }" title="${ NoScriptUI.const["resource-types"][type] }">
-    <input class="custom-control-input" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( enabled ) } ${ new NoScriptUI.tpl.InputDisabled( ! enabled ) } ${ new NoScriptUI.tpl.RuleAttributes( ruleData ) } >
-    <span class="custom-control-indicator m-1"></span>
-    <span class="custom-control-description m-1">${ type }</span>
-  </label>
-  `;
+<label class="custom-control custom-checkbox ${ enabled ? 'border border-' + this.data.style + ' rounded' : '' }" title="${ NoScriptUI.const["resource-types"][type] }">
+  <input class="custom-control-input" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( enabled ) } ${ new NoScriptUI.tpl.InputDisabled( ! enabled ) } ${ new NoScriptUI.tpl.RuleAttributes( ruleData ) } >
+  <span class="custom-control-indicator m-1"></span>
+  <span class="custom-control-description m-1">${ type }</span>
+</label>
+`;
             }
             return output;
           }
