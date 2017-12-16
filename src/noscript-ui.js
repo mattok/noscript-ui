@@ -960,9 +960,9 @@
                 )
             };
             return nano.html `
-<tt class="btn-group" data-toggle="buttons">
+<samp class="btn-group" data-toggle="buttons">
 ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl.URLRuleSelectorUsername( usernameData ) }${ new NoScriptUI.tpl.URLRuleSelectorHostname( this.data ) }${ new NoScriptUI.tpl.URLRuleSelectorPort( portData ) }
-</tt>`;
+</samp>`;
           }
         }
 
@@ -975,8 +975,8 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
   <div class="col-4 col-md-3 col-lg-3 col-xl-2">
     <button class="btn btn-secondary btn-sm" type="button">Close</button>
   </div>
-  <h1 class="col-12 order-2 col-md-6 order-md-1 col-lg-6 col-xl-8 text-center small mt-1"><tt>${ this.data["current-url"] }</tt></h1>
-  <form class="col-8 order-1 col-md-3 order-md-2 col-lg-3 col-xl-2 text-right" action="" method="get">
+  <h1 class="col-12 order-2 col-md-6 order-md-1 col-lg-6 col-xl-8 text-center small mt-1"><samp>${ this.data["current-url"] }</samp></h1>
+  <form class="col-8 order-1 col-md-3 order-md-2 col-lg-3 col-xl-2 text-right" method="get">
     <button class="btn btn-primary btn-sm" type="submit">Reload</button>
     <button class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" type="button">Settings</button>
   </form>
@@ -993,12 +993,12 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
               }
               output += nano.html `
 <div class="card bg-warning mt-3" id="noscript-uncategorised">
-  <h2 class="card-header">
-    <span class="d-flex justify-content-between">
-      <span>Uncategorised (Blocked)</span>
-      <span id="noscript-primary-rule" data-url="${ this.data["current-url"] }" class="float-right">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
-    </span>
-  </h2>
+  <div class="card-header">
+    <div class="row">
+      <h3 class="col-12 text-center col-sm-7 text-sm-left ">Uncategorised (Blocked)</h3>
+      <div id="noscript-primary-rule" class="col-12 text-center col-sm-5 text-sm-right" data-url="${ this.data["current-url"] }" >${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</div>
+    </div>
+  </div>
 
   <ul class="list-group list-group-flush">
     ${ new NoScriptUI.tpl.UncategorisedItems( this.data ) }
@@ -1020,12 +1020,10 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
                 };
                 output += nano.html `
 <div class="card bg-${ data.style } mt-3 noscript-categorised" data-access="${ accessType }">
-  <h2 class="card-header text-white">
-    <span class="d-flex justify-content-between">
-      <span>${ NoScriptUI.const["access-types"][accessType].description }</span>
-      <span class="noscript-forget-all"><button class="btn btn-secondary btn-sm" type="button">Forget All</button></span>
-    </span>
-  </h2>
+  <div class="card-header text-white">
+    <div class="noscript-forget-all float-right"><button class="btn btn-secondary btn-sm" type="button">Forget All</button></div>
+    <h3>${ NoScriptUI.const["access-types"][accessType].description }</h3>
+  </div>
 
   <ul class="list-group list-group-flush">
     ${ new NoScriptUI.tpl.CategorisedItems( data ) }
