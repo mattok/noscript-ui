@@ -970,7 +970,20 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
         {
           html()
           {
-            var output = '';
+            var output = nano.html `
+<header class="row mt-1">
+  <div class="col-4 col-md-3 col-lg-3 col-xl-2">
+    <button class="btn btn-secondary btn-sm" type="button">Close</button>
+  </div>
+  <h1 class="col-12 order-2 col-md-6 order-md-1 col-lg-6 col-xl-8 text-center small mt-1"><tt>${ this.data["current-url"] }</tt></h1>
+  <form class="col-8 order-1 col-md-3 order-md-2 col-lg-3 col-xl-2 text-right" action="" method="get">
+    <button class="btn btn-primary btn-sm" type="submit">Reload</button>
+    <button class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" type="button">Settings</button>
+  </form>
+</header>
+            
+<main>
+`;
             if ( Object.keys(this.data.categories.uncategorised).length > 0 )
             {
               var urlData =
@@ -1024,6 +1037,7 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
             
             output += nano.html `<pre><code>${ JSON.stringify( NoScriptUI.config, undefined, 2 ) }</code></pre>`;
             
+            output += nano.html `</main>`;
             return output;
           }
         }
@@ -1035,8 +1049,6 @@ ${ new NoScriptUI.tpl.URLRuleSelectorScheme( schemeData ) }${ new NoScriptUI.tpl
         NoScriptUI.session["current-url"] = theURL;
         NoScriptUI.session["resources"] = theResources;
       
-        document.getElementById('noscript-page-url').innerHTML = nano.html `${ theURL }`;
-        
         if ( ! ("primary-site-components" in NoScriptUI.session) )
         {
           NoScriptUI.session["primary-site-components"] = NoScriptUI.method.GetInitialComponents( theURL );
