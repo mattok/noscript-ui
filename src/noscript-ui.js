@@ -702,8 +702,8 @@
         <button class="btn btn-outline-primary btn-sm mr-1" type="button" data-toggle="collapse" data-target="#noscript-uncategorised-types-${ i }" aria-expanded="false" aria-controls="noscript-uncategorised-types-${ i }">+</button>
         <span class="noscript-secondary-rule" data-url="${ url }">${ new NoScriptUI.tpl.URLRuleSelector( urlData ) }</span>
       </div>
-      <div class="btn-toolbar noscript-toolbar" role="toolbar" aria-label"Allow/Block toolbar">
-        <span class="btn-group mr-1" role="group" aria-label"Allow group">
+      <div class="btn-toolbar noscript-toolbar" role="toolbar" aria-label="Allow/Block toolbar">
+        <span class="btn-group mr-1" role="group" aria-label="Allow group">
           <span class="btn btn-outline-info btn-sm disabled">
             Allow
           </span>
@@ -717,7 +717,7 @@
             anywhere
           </button>
         </span>
-        <span class="btn-group" role="group" aria-label"Block group">
+        <span class="btn-group" role="group" aria-label="Block group">
           <span class="btn btn-outline-danger btn-sm disabled">
             Block
           </span>
