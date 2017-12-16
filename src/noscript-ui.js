@@ -805,7 +805,7 @@
             return ( this.data.scheme.length > 0 )
               ? nano.html `
 <label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-scheme" data-component="scheme" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.scheme }://
+  <input class="noscript-url-scheme" data-component="scheme" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.scheme }://
 </label>`
               : '';
           }
@@ -818,7 +818,7 @@
             return ( this.data.username.length > 0 )
               ? nano.html `
 <label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-username" data-component="username" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.username }@
+  <input class="noscript-url-username" data-component="username" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.username }@
 </label>`
               : '';
           }
@@ -831,7 +831,7 @@
             return ( this.data.ip.length > 0 )
               ? nano.html `
 <label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-ip" data-component="ip" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.ip }
+  <input class="noscript-url-ip" data-component="ip" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.ip }
 </label>`
               : '';
           }
@@ -844,7 +844,7 @@
             return ( this.data.subdomain.length > 0 )
               ? nano.html `
 <label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-subdomain" data-component="subdomain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.subdomain }.
+  <input class="noscript-url-subdomain" data-component="subdomain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.subdomain }.
 </label>`
               : '';
           }
@@ -857,7 +857,7 @@
             return ( this.data.domain.length > 0 )
               ? nano.html `
 <label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-domain" data-component="domain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />${ this.data.domain }
+  <input class="noscript-url-domain" data-component="domain" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />${ this.data.domain }
 </label>`
               : '';
           }
@@ -920,7 +920,7 @@
             return ( this.data.port.length > 0 )
               ? nano.html `
 <label class="btn btn-outline-secondary btn-sm mr-1 mb-0 ${this.data.enabled ? 'active' : '' }">
-  <input class="noscript-url-port" data-component="port" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } autocomplete="off" />:${ this.data.port }
+  <input class="noscript-url-port" data-component="port" type="checkbox" ${ new NoScriptUI.tpl.InputChecked( this.data.enabled ) } ${ new NoScriptUI.tpl.InputDisabled( this.data.disabled ) } />:${ this.data.port }
 </label>`
               : '';
           }
